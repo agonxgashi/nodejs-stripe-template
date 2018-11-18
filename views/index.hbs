@@ -1,1 +1,37 @@
-as,dfh
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Title</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+    crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="d-flex justify-content-center p-5">
+    
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="https://cdn4.iconfinder.com/data/icons/fitness-bodybuiding/100/sneakernike-512.png"
+        alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title"> {{data.paymentName}} </h5>
+        <p class="card-text text-muted">{{data.paymentDescr}}</p>
+        <form action="/charge" method="POST">
+        <script src="https://checkout.stripe.com/checkout.js" 
+                class="stripe-button" 
+                data-key="{{data.publicToken}}" 
+                data-amount="{{data.amount}}" 
+                data-name="{{data.paymentName}}"
+                data-description="{{data.paymentDescr}}"
+                data-locale="auto"
+                data-currency="{{data.currency}}"></script>
+        {{!-- <input type="hidden" name="publicToken" value="{{data.publicToken}}"> --}}
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
